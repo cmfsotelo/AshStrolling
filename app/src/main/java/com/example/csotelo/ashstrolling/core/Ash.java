@@ -26,7 +26,7 @@ public class Ash {
 //        return path;
 //    }
 
-    public int moveInPath(String path) {
+    public int catchPokemonInPath(String path) {
         HashSet<String> visitedPositions = new HashSet<>();
         visitedPositions.add(position.toString());
         String pAux = path.toLowerCase();
@@ -49,6 +49,7 @@ public class Ash {
                 position.x++;
                 break;
             case 'o':
+            case 'w':
                 position.x--;
                 break;
             default:

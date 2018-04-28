@@ -9,26 +9,26 @@ class PathTestUnit {
 
     @Test
     fun emptyPathCheck() {
-        assert(ash.moveInPath("") == 1)
+        assert(ash.catchPokemonInPath("") == 1)
     }
 
     @Test
     fun fstPathCheck() {
-        assert(ash.moveInPath("neso") == 4)
+        assert(ash.catchPokemonInPath("neso") == 4)
     }
 
     @Test
     fun sndPathCheck() {
-        assert(ash.moveInPath("NSNSNSNSNS") == 2)
+        assert(ash.catchPokemonInPath("NSNSNSNSNS") == 2)
     }
 
     @Test
     fun trdPathCheck() {
-        assert(ash.moveInPath("eennesssonoo") == 10)
+        assert(ash.catchPokemonInPath("eennesssonoo") == 10)
     }
 
     @Test
     fun fourthPathCheck() {
-        assert(ash.moveInPath("eenneesososssneoo") == 15)
+        assert(ash.catchPokemonInPath("eenneesososssneoo") == 15)
     }
 }
