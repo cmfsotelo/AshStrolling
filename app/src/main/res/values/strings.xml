@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">AshStrolling</string>
-    <string name="nav_stroll">Home</string>
-    <string name="nav_pokedex">Dashboard</string>
-    <string name="nav_about">Notifications</string>
+    <string name="nav_stroll">Stroll</string>
+    <string name="nav_pokedex">Pokédex</string>
+    <string name="nav_about">About</string>
     <string name="path">Path</string>
     <string name="northAcron">N</string>
     <string name="southAcron">S</string>
