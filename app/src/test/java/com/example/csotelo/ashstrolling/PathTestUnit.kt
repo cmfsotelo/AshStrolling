@@ -8,6 +8,11 @@ class PathTestUnit {
     private val ash = Ash()
 
     @Test
+    fun emptyPathCheck() {
+        assert(ash.moveInPath("") == 1)
+    }
+
+    @Test
     fun fstPathCheck() {
         assert(ash.moveInPath("neso") == 4)
     }

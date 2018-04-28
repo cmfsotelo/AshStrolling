@@ -11,20 +11,20 @@ import java.util.HashSet;
 public class Ash {
     private Point position = new Point();
 
-    public Path moveInGraphicPath(String pathString) {
-        Path path = new Path();
-        String pAux = pathString.toLowerCase();
-        for (char c : pAux.toCharArray()) {
-            moveInDirection(c);
-            path.lineTo(position.x, position.y);
-        }
-        Canvas c = new Canvas();
-        c.drawPath(path, new Paint());
-        Rect bounds = c.getClipBounds();
-        Bitmap b = Bitmap.createBitmap(bounds.top - bounds.bottom, bounds.right - bounds.left, Bitmap.Config.RGB_565);
-
-        return path;
-    }
+//    public Path moveInGraphicPath(String pathString) {
+//        Path path = new Path();
+//        String pAux = pathString.toLowerCase();
+//        for (char c : pAux.toCharArray()) {
+//            moveInDirection(c);
+//            path.lineTo(position.x, position.y);
+//        }
+//        Canvas c = new Canvas();
+//        c.drawPath(path, new Paint());
+//        Rect bounds = c.getClipBounds();
+//        Bitmap b = Bitmap.createBitmap(bounds.top - bounds.bottom, bounds.right - bounds.left, Bitmap.Config.RGB_565);
+//
+//        return path;
+//    }
 
     public int moveInPath(String path) {
         HashSet<String> visitedPositions = new HashSet<>();
