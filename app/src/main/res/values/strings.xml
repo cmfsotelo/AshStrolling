@@ -10,5 +10,6 @@
     <string name="westAcron">W</string>
     <string name="ash_stroll_action">Ash Stroll!</string>
     <string name="author">Author: </string>
+    <string name="author_url" translatable="false">http://www.linkedin.com/in/csotelo</string>
     <string name="me" translatable="false"><a href='http://www.linkedin.com/in/csotelo'>Carlos Sotelo</a></string>
 </resources>
