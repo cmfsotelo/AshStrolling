@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AshStrolling</string>
+    <string name="nav_stroll">Home</string>
+    <string name="nav_pokedex">Dashboard</string>
+    <string name="nav_about">Notifications</string>
+    <string name="path">Path</string>
+    <string name="northAcron">N</string>
+    <string name="southAcron">S</string>
+    <string name="eastAcron">E</string>
+    <string name="westAcron">W</string>
+    <string name="ash_stroll_action">Ash Stroll!</string>
+</resources>

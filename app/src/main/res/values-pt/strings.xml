@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="path">Caminho</string>
+    <string name="northAcron">N</string>
+    <string name="southAcron">S</string>
+    <string name="eastAcron">E</string>
+    <string name="westAcron">O</string>
+    <string name="ash_stroll_action">Ash Stroll!</string>
+</resources>
