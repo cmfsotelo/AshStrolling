@@ -10,10 +10,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val stroll = StrollFragment()
-    private val about = AboutFragment()
+    private var currFrag = R.id.navigation_stroll
+    private var dir = 0
+    private var stroll = StrollFragment()
+    private var about = AboutFragment()
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        dir = item.itemId - currFrag
+        currFrag = item.itemId
         when (item.itemId) {
             R.id.navigation_stroll -> {
                 replaceFragment(stroll, R.id.content_frame)
@@ -34,20 +38,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        addFragment(stroll, R.id.content_frame)
+        navigation.selectedItemId = currFrag
     }
 
-    inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> FragmentTransaction) {
-        beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left).func().commit()
+    inline fun FragmentManager.inTransaction(dir: Int, func: FragmentTransaction.() -> FragmentTransaction) {
+        var animEnter = if (dir < 0) R.anim.enter_from_right else R.anim.enter_from_left
+        var animExit = if (dir < 0) R.anim.exit_to_left else R.anim.exit_to_right
+        beginTransaction().setCustomAnimations(animEnter, animExit).func().commit()
     }
 
     fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int) {
-        supportFragmentManager.inTransaction { add(frameId, fragment) }
+        supportFragmentManager.inTransaction(dir, { add(frameId, fragment) })
     }
 
 
     fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int) {
-        supportFragmentManager.inTransaction { replace(frameId, fragment) }
+        supportFragmentManager.inTransaction(dir, { replace(frameId, fragment) })
     }
 
 
