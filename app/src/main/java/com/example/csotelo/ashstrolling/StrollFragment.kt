@@ -44,8 +44,9 @@ class StrollFragment : Fragment() {
     private fun updateTextViews() {
         val pokemonCaught = ash.catchPokemonInPath(tvPath.text.toString())
         tvPokemonCaught.text = "$pokemonCaught"
-
-        val efficiency = pokemonCaught / tvPath.text.length
+        var efficiency = 0f
+        if (tvPath.text.isNotEmpty())
+            efficiency = (pokemonCaught - 1) / tvPath.text.length.toFloat()
         tvPathEfficiency.text = "$efficiency %"
     }
 
