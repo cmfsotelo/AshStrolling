@@ -7,34 +7,33 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-
-import com.example.csotelo.ashstrolling.core.Ash
-
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
+import com.example.csotelo.ashstrolling.core.Ash
 
 
 class StrollFragment : Fragment() {
 
-    internal var ash = Ash()
+    private var ash = Ash()
+
     @BindView(R.id.tvPath)
-    internal var tvPath: TextView? = null
+    lateinit var tvPath: TextView
     @BindView(R.id.btnClear)
-    internal var btnClear: Button? = null
+    lateinit var btnClear: Button
     @BindView(R.id.tvPokemonCaught)
-    internal var tvPokemonCaught: TextView? = null
+    lateinit var tvPokemonCaught: TextView
 
     @OnClick(R.id.btnN, R.id.btnO, R.id.btnE, R.id.btnS)
     fun navClick(btn: Button) {
-        tvPath!!.append(btn.text)
-        btnClear!!.visibility = View.VISIBLE
+        tvPath.append(btn.text)
+        btnClear.visibility = View.VISIBLE
     }
 
     @OnClick(R.id.btnStartPath)
     fun pathClick(btn: Button) {
-        val pokemonCaught = ash.catchPokemonInPath(tvPath!!.text.toString())
-        tvPokemonCaught!!.setText(pokemonCaught)
+        val pokemonCaught = ash.catchPokemonInPath(tvPath.text.toString())
+        tvPokemonCaught.text = "" + pokemonCaught
     }
 
     @OnClick(R.id.btnClear)
