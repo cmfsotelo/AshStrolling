@@ -3,6 +3,7 @@ package com.example.csotelo.ashstrolling
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.support.annotation.Nullable
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import butterknife.OnClick
 
 class AboutFragment : Fragment() {
 
+    @Nullable
     @OnClick(R.id.tv_author)
     fun linkClick() {
         val uri = Uri.parse(getString(R.string.author_url))
