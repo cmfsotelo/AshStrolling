@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     private var dir = 0
     private var stroll = StrollFragment()
     private var about = AboutFragment()
+    private var pokedex = PokedexFragment()
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         dir = item.itemId - currFrag
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_pokedex -> {
+                replaceFragment(pokedex, R.id.content_frame)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_about -> {
@@ -37,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar!!.hide()
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.selectedItemId = currFrag
     }
