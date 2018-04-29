@@ -19,6 +19,8 @@ class StrollFragment : Fragment() {
 
     @BindView(R.id.tvPath)
     lateinit var tvPath: TextView
+    @BindView(R.id.tvPathEfficiency)
+    lateinit var tvPathEfficiency: TextView
     @BindView(R.id.btnClear)
     lateinit var btnClear: Button
     @BindView(R.id.tvPokemonCaught)
@@ -28,18 +30,23 @@ class StrollFragment : Fragment() {
     fun navClick(btn: Button) {
         tvPath.append(btn.text)
         btnClear.visibility = View.VISIBLE
-    }
 
-    @OnClick(R.id.btnStartPath)
-    fun pathClick(btn: Button) {
-        val pokemonCaught = ash.catchPokemonInPath(tvPath.text.toString())
-        tvPokemonCaught.text = "" + pokemonCaught
+        updateTextViews()
     }
 
     @OnClick(R.id.btnClear)
     fun clearPath(btn: Button) {
-        tvPath!!.text = ""
-        btnClear!!.visibility = View.INVISIBLE
+        tvPath.text = ""
+        btnClear.visibility = View.INVISIBLE
+        updateTextViews()
+    }
+
+    private fun updateTextViews() {
+        val pokemonCaught = ash.catchPokemonInPath(tvPath.text.toString())
+        tvPokemonCaught.text = "$pokemonCaught"
+
+        val efficiency = pokemonCaught / tvPath.text.length
+        tvPathEfficiency.text = "$efficiency %"
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
