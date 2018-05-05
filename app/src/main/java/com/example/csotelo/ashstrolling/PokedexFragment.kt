@@ -13,7 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import butterknife.BindView
 import butterknife.ButterKnife
-import com.example.csotelo.ashstrolling.core.data.Pokemon
+import com.example.csotelo.ashstrolling.core.data.entities.Pokemon
 import com.example.csotelo.ashstrolling.listing.MainViewModel
 import com.example.csotelo.ashstrolling.listing.PokemonAdapter
 

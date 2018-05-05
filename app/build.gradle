@@ -9,6 +9,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 26
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.example.csotelo.ashstrolling"
         minSdkVersion 15
         targetSdkVersion 26
@@ -80,6 +81,13 @@ dependencies {
     implementation 'com.github.florent37:picassopalette:2.0.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
+    //JSON
+    implementation "com.google.code.gson:gson:2.8.0"
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+
+    implementation 'com.android.support:support-annotations:27.1.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.ViewModel
 import android.arch.paging.PagedList
 import com.example.csotelo.ashstrolling.AshstrollingApplication
-import com.example.csotelo.ashstrolling.core.data.Pokemon
+import com.example.csotelo.ashstrolling.core.data.entities.Pokemon
 import com.example.csotelo.ashstrolling.core.data.PokemonDataBase
 
 class MainViewModel : ViewModel() {
@@ -13,7 +13,7 @@ class MainViewModel : ViewModel() {
     internal val pokemonList: LiveData<PagedList<Pokemon>>
 
     init {
-        val pokemonDao = PokemonDataBase.getInstance(AshstrollingApplication.getContext()).pokemonDao()
+        val pokemonDao = PokemonDataBase.getInstance(AshstrollingApplication.context!!).pokemonDao()
         pokemonList = pokemonDao.pokemons().create(INITIAL_LOAD_KEY, PagedList.Config.Builder()
                 .setPageSize(PAGE_SIZE)
                 .setPrefetchDistance(PREFETCH_DISTANCE)
