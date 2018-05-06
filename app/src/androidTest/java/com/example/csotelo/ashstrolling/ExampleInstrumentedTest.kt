@@ -2,11 +2,10 @@ package com.example.csotelo.ashstrolling
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
-
+import com.example.csotelo.ashstrolling.core.data.DbUtils
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
