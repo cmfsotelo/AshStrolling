@@ -13,14 +13,14 @@ import java.lang.reflect.Modifier.PRIVATE
 interface PokemonDao {
 
     @Query("SELECT * FROM pokemon ORDER BY id ASC")
-    fun pokemons(): LivePagedListProvider<Int, Pokemon>
+    fun getAllPokemons(): LivePagedListProvider<Int, Pokemon>
 
     @Query("SELECT * FROM pokemon WHERE id = :index")
     fun getPokemon(index: Int): Pokemon
 
     @VisibleForTesting(otherwise = PRIVATE)
     @Query("SELECT COUNT(*) FROM pokemon")
-    fun pokemonsCount(): Int?
+    fun count(): Int?
 
     @Insert
     fun insert(vararg pokemons: Pokemon)

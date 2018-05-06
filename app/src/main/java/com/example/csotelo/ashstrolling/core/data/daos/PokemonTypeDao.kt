@@ -20,7 +20,7 @@ interface PokemonTypeDao {
 
     @VisibleForTesting(otherwise = PRIVATE)
     @Query("SELECT COUNT(*) FROM pokemon_type")
-    fun typesCount(): Int?
+    fun count(): Int?
 
     @Insert
     fun insert(vararg pokemons: PokemonType)

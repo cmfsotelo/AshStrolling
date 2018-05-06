@@ -25,11 +25,11 @@ class PokemonDBPopulator private constructor(private val context: Context) {
 
 //
 //    private fun pokemonList(): Array<Pokemon> {
-//        val pokemons = ArrayList<Pokemon>()
+//        val getAllPokemons = ArrayList<Pokemon>()
 //        val pokemonNames = context.resources.getStringArray(R.array.pokemon_names)
 //        for (i in pokemonNames.indices)
-//            pokemons.add(Pokemon(i + 1, pokemonNames[i]))
-//        return pokemons.toTypedArray()
+//            getAllPokemons.add(Pokemon(i + 1, pokemonNames[i]))
+//        return getAllPokemons.toTypedArray()
 //    }
 
     private fun onDBPopulationSuccess() {

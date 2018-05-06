@@ -13,6 +13,8 @@ class Pokemon(@field:PrimaryKey
               var order: Int,
               @field:ColumnInfo(name = "name")
               var name: String,
+              @field:ColumnInfo(name = "spriteUrl")
+              var spriteUrl: String,
               @field:ColumnInfo(name = "weight")
               var weight: Float,
               @field:ColumnInfo(name = "height")
@@ -30,7 +32,7 @@ class Pokemon(@field:PrimaryKey
         }
 
         fun convert(pokemon: com.example.csotelo.ashstrolling.core.data.json.Pokemon): Pokemon {
-            return Pokemon(pokemon.id, pokemon.order, pokemon.name, pokemon.weight, pokemon.height)
+            return Pokemon(pokemon.id, pokemon.order, pokemon.name, pokemon.spriteUrl, pokemon.weight, pokemon.height)
         }
     }
 }

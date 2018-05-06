@@ -20,20 +20,19 @@ class DaoInstrumentedTest {
 
     @Before
     fun setupTests() {
-        db.pokemonTypeJoinDao().deleteAll()
-        db.pokemonDao().deleteAll()
-        db.pokemonTypeDao().deleteAll()
+        //db.pokemonTypeJoinDao().deleteAll()
+        //db.pokemonDao().deleteAll()
+        //db.pokemonTypeDao().deleteAll()
     }
 
     @Test
-    fun testPokemonDaoInsertionBulk150() {
-        // Context of the app under test.
+    fun testPokemonDaoInsertion1stGen() {
         println("Pokemons cought:")
         for (i in 1..150) {
             val pok = DbUtils.getPokemon(i)
             println("#$i -> ${pok.name}")
         }
-        assert(db.pokemonDao().pokemonsCount() == 150)
+        assert(db.pokemonDao().count() == 150 && db.pokemonTypeDao().count() == 6)
     }
 
     @Test
@@ -41,7 +40,7 @@ class DaoInstrumentedTest {
         // Context of the app under test.
         val pok = DbUtils.getPokemon(Utils.randomInt(802))
         println(pok.name)
-        assert(db.pokemonDao().pokemonsCount() == 1)
+        assert(db.pokemonDao().count() == 1)
     }
 
     @Test

@@ -54,7 +54,9 @@ class DbUtils {
 
         fun getPokemonRest(index: Int): com.example.csotelo.ashstrolling.core.data.json.Pokemon? {
             val pokeAsString: String = URL(PokemonRestAPI.POKEMON_URL + index).readText()
-            return Gson().fromJson(pokeAsString, com.example.csotelo.ashstrolling.core.data.json.Pokemon::class.java)
+            val pok = Gson().fromJson(pokeAsString, com.example.csotelo.ashstrolling.core.data.json.Pokemon::class.java)
+            pok.spriteUrl = "${PokemonRestAPI.POKEMON_FRONT_DEFAULT_URL}${pok.id}.png"
+            return pok
         }
 
         fun getPokemonTypeRest(index: Int): com.example.csotelo.ashstrolling.core.data.json.PokemonType? {

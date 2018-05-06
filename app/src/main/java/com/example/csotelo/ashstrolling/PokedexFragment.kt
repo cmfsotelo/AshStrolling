@@ -14,7 +14,7 @@ import android.view.ViewGroup
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.example.csotelo.ashstrolling.core.data.entities.Pokemon
-import com.example.csotelo.ashstrolling.listing.MainViewModel
+import com.example.csotelo.ashstrolling.listing.PokemonViewModel
 import com.example.csotelo.ashstrolling.listing.PokemonAdapter
 
 
@@ -27,18 +27,20 @@ class PokedexFragment : Fragment() {
         // Inflate the layout for this fragment
         val rootView = inflater!!.inflate(R.layout.fragment_pokedex, container, false)
         ButterKnife.bind(this, rootView)
+
+
+        val viewModel = ViewModelProviders.of(this).get(PokemonViewModel::class.java)
+        val adapter = PokemonAdapter()
+        viewModel.pokemonList.observe(this, Observer<PagedList<Pokemon>> { adapter.setList(it) })
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = GridLayoutManager(context, 2)
+        recyclerView.adapter = adapter
         return rootView
     }
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
 
-        val viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        val adapter = PokemonAdapter()
-        viewModel.pokemonList.observe(this, Observer<PagedList<Pokemon>> { adapter.setList(it) })
 
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = GridLayoutManager(context, 2)
-        recyclerView.adapter = adapter
     }
 }

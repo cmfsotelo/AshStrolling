@@ -8,13 +8,13 @@ import com.example.csotelo.ashstrolling.AshstrollingApplication
 import com.example.csotelo.ashstrolling.core.data.entities.Pokemon
 import com.example.csotelo.ashstrolling.core.data.PokemonDataBase
 
-class MainViewModel : ViewModel() {
+class PokemonViewModel : ViewModel() {
 
     internal val pokemonList: LiveData<PagedList<Pokemon>>
 
     init {
         val pokemonDao = PokemonDataBase.getInstance(AshstrollingApplication.context!!).pokemonDao()
-        pokemonList = pokemonDao.pokemons().create(INITIAL_LOAD_KEY, PagedList.Config.Builder()
+        pokemonList = pokemonDao.getAllPokemons().create(INITIAL_LOAD_KEY, PagedList.Config.Builder()
                 .setPageSize(PAGE_SIZE)
                 .setPrefetchDistance(PREFETCH_DISTANCE)
                 .setEnablePlaceholders(true)
