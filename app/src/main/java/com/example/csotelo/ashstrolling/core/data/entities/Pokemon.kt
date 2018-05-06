@@ -28,5 +28,9 @@ class Pokemon(@field:PrimaryKey
                 return oldPokemon.name == newPokemon.name
             }
         }
+
+        fun convert(pokemon: com.example.csotelo.ashstrolling.core.data.json.Pokemon): Pokemon {
+            return Pokemon(pokemon.id, pokemon.order, pokemon.name, pokemon.weight, pokemon.height)
+        }
     }
 }
