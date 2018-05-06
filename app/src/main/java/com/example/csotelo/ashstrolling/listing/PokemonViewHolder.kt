@@ -8,7 +8,7 @@ import android.widget.TextView
 
 import com.example.csotelo.ashstrolling.R
 import com.example.csotelo.ashstrolling.core.data.entities.Pokemon
-import com.example.csotelo.ashstrolling.utils.TextUtils
+import com.example.csotelo.ashstrolling.utils.Utils
 import com.github.florent37.picassopalette.PicassoPalette
 import com.squareup.picasso.Picasso
 
@@ -21,7 +21,7 @@ class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bindTo(pokemon: Pokemon) {
         itemView.tag = pokemon.id
-        pokemonIdTextView.text = itemView.context.getString(R.string.pokemon_id, TextUtils.toThreeDigitNumber(pokemon.id))
+        pokemonIdTextView.text = itemView.context.getString(R.string.pokemon_id, Utils.toThreeDigitNumber(pokemon.id))
         pokemonNameTextView.text = pokemon.name
         Picasso.with(itemView.context)
                 .load(pokemonSpriteUrl(pokemon.id))
