@@ -28,11 +28,11 @@ class DaoInstrumentedTest {
     @Test
     fun testPokemonDaoInsertion1stGen() {
         println("Pokemons cought:")
-        for (i in 1..150) {
+        for (i in 1..151) {
             val pok = DbUtils.getPokemon(i)
             println("#$i -> ${pok.name}")
         }
-        assert(db.pokemonDao().count() == 150 && db.pokemonTypeDao().count() == 6)
+        assert(db.pokemonDao().count() == 151 && db.pokemonTypeDao().count() == 17)
     }
 
     @Test

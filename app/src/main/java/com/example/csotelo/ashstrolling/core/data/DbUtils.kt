@@ -1,5 +1,6 @@
 package com.example.csotelo.ashstrolling.core.data
 
+import android.util.Log
 import com.example.csotelo.ashstrolling.AshstrollingApplication
 import com.example.csotelo.ashstrolling.core.PokemonRestAPI
 import com.example.csotelo.ashstrolling.core.data.entities.Pokemon
@@ -7,10 +8,16 @@ import com.example.csotelo.ashstrolling.core.data.entities.PokemonType
 import com.example.csotelo.ashstrolling.core.data.entities.PokemonTypeJoin
 import com.example.csotelo.ashstrolling.core.data.json.PokemonTypeSlot
 import com.google.gson.Gson
+import io.reactivex.Observable
 import java.net.URL
+
 
 class DbUtils {
     companion object {
+
+        fun getPokemonObservable(index: Int): Observable<Pokemon> {
+            return Observable.create { emitter -> emitter.onNext(getPokemon(index)) }
+        }
 
         fun getPokemon(index: Int): Pokemon {
             val db = PokemonDataBase.getInstance(AshstrollingApplication.context!!)
@@ -26,7 +33,9 @@ class DbUtils {
                     val pokemonType = getPokemonType(slot.type)
                     db.pokemonTypeJoinDao().insert(PokemonTypeJoin(pokemon.id, pokemonType.id))
                 }
-
+                Log.i("NEWPOKEMON", "Got new pokemon #${pokemon.id} -> ${pokemon.name}")
+            } else {
+                Log.i("OldPokemon", "Got  pokemon #${pokemon.id} -> ${pokemon.name}")
             }
             return pokemon
         }
