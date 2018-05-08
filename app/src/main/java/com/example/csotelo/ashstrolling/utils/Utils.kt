@@ -16,4 +16,8 @@ object Utils {
         val r = Random()
         return r.nextInt(max - min + 1) + min
     }
+
+    fun randomIntList(max: Int, min: Int = 0, count: Int = 1): List<Int> {
+        return IntArray(count).map { randomInt(max, min) }
+    }
 }

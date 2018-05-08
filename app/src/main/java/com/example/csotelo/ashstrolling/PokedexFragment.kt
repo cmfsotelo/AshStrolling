@@ -3,6 +3,7 @@ package com.example.csotelo.ashstrolling
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.arch.paging.PagedList
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -42,13 +43,16 @@ class PokedexFragment : Fragment() {
 
     lateinit var pokemonObs: Observable<Pokemon>
 
-    override fun onStart() {
-        super.onStart()
-
-        pokemonObs = DbUtils.getPokemonObservable(1)
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        pokemonObs = DbUtils.getAllPokemonsObservable()
                 .observeOn(Schedulers.computation())
                 .subscribeOn(Schedulers.computation())
-        pokemonObs.subscribe(PokemonConsumer())
+    }
+
+    override fun onStart() {
+        super.onStart()
+        pokemonObs.subscribe()
     }
 
     override fun onStop() {

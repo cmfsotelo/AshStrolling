@@ -19,6 +19,18 @@ class DbUtils {
             return Observable.create { emitter -> emitter.onNext(getPokemon(index)) }
         }
 
+        fun getAllPokemonsObservable(): Observable<Pokemon> {
+            return Observable.create { emitter -> for (i in 1..800) emitter.onNext(getPokemon(i)) }
+        }
+
+        fun getPokemonsListObservable(indexes: IntArray): Observable<Pokemon> {
+            return Observable.create { emitter -> for (i in indexes) emitter.onNext(getPokemon(i)) }
+        }
+
+        fun getPokemonsList(indexes: List<Int>): List<Pokemon> {
+            return indexes.map { i -> getPokemon(i) }
+        }
+
         fun getPokemon(index: Int): Pokemon {
             val db = PokemonDataBase.getInstance(AshstrollingApplication.context!!)
             val pokemonDao = db.pokemonDao()
@@ -29,7 +41,7 @@ class DbUtils {
                 pokemonDao.insert(pokemon)
                 //treat types
                 for (slot: PokemonTypeSlot in pok.types) {
-                    slot.type.url = slot.type.url // FIX ME ID IS MISSING, thats why url must be refreshed
+                    slot.type.url = slot.type.url // FIXME ID IS MISSING, thats why url must be refreshed
                     val pokemonType = getPokemonType(slot.type)
                     db.pokemonTypeJoinDao().insert(PokemonTypeJoin(pokemon.id, pokemonType.id))
                 }

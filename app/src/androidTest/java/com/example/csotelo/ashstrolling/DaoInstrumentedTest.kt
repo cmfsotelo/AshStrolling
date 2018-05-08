@@ -20,9 +20,9 @@ class DaoInstrumentedTest {
 
     @Before
     fun setupTests() {
-        //db.pokemonTypeJoinDao().deleteAll()
-        //db.pokemonDao().deleteAll()
-        //db.pokemonTypeDao().deleteAll()
+        db.pokemonTypeJoinDao().deleteAll()
+        db.pokemonDao().deleteAll()
+        db.pokemonTypeDao().deleteAll()
     }
 
     @Test
@@ -48,6 +48,15 @@ class DaoInstrumentedTest {
         // Context of the app under test.
         val pokeType = DbUtils.getPokemonType(4)
         assertEquals("poison", pokeType.name)
+    }
+
+    @Test
+    fun testPokemonDaoInsertionRandomList() {
+        // Context of the app under test.
+        TestUtils.cleanPokemonDb(db)
+        val randomList = Utils.randomIntList(151, 1, 15)
+        val pokelist = DbUtils.getPokemonsList(randomList)
+        assertEquals("poison", pokelist.size == 15)
     }
 
     @Test
